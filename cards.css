@@ -16,6 +16,7 @@ body {
     gap: 20px;
     padding: 20px;
     z-index: 999;
+    margin-top: 20px;
 }
 
 /* Heart Shape (using your provided CSS) */
@@ -24,8 +25,10 @@ body {
     width: 200px;
     height: 200px;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
+/* Heart Shape */
 .heart {
     position: relative;
     width: 100%;
@@ -80,6 +83,28 @@ body {
     text-align: center;
 }
 
+/* Button Style */
+button {
+    background-color: brown;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 16px;
+    border: none;
+    display: block;
+    margin: 20px auto;
+    transition: background-color 0.3s;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #a52a2a;
+}
+
 /* Animation (Falling Effects) */
 #fallingEffects {
     position: fixed;
@@ -94,7 +119,7 @@ body {
 .heart, .balloon, .gift, .snowflake, .sprinkle {
     position: absolute;
     opacity: 1;
-    animation: fall 30s infinite linear; /* Set to 120s for 2 minutes */
+    animation: fall 30s infinite linear;
 }
 
 /* The Falling Animation for 2 minutes */
@@ -104,7 +129,112 @@ body {
         opacity: 1;
     }
     100% {
-        transform: translateY(100vh); /* Let them fall off screen */
+        transform: translateY(100vh);
         opacity: 0;
+    }
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small devices (phones in portrait mode) */
+@media only screen and (max-width: 480px) {
+    .card {
+        width: 150px;
+        height: 150px;
+    }
+
+    .quote {
+        font-size: 14px;
+    }
+
+    .card-container {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+/* Medium devices (tablets and large phones in portrait mode) */
+@media only screen and (max-width: 768px) {
+    .card {
+        width: 180px;
+        height: 180px;
+    }
+
+    .quote {
+        font-size: 16px;
+    }
+
+    .card-container {
+        gap: 15px;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 9px 14px;
+    }
+}
+
+/* Large devices (laptops and desktops) */
+@media only screen and (min-width: 1024px) {
+    .card {
+        width: 250px;
+        height: 250px;
+    }
+
+    .quote {
+        font-size: 20px;
+    }
+
+    .card-container {
+        gap: 20px;
+    }
+}
+
+
+button {
+    background-color: brown;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Anchor tag styles inside the button */
+button a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block; /* Ensure anchor tag acts like block-level element */
+}
+
+/* Hover Effect */
+button:hover {
+    background-color: darkbrown;
+}
+
+/* Responsive Styles for Mobile Devices */
+@media (max-width: 768px) {
+    button {
+        width: 100%; /* Make button full width on smaller screens */
+        padding: 15px; /* Increase padding for touchscreens */
+        font-size: 18px; /* Adjust font size for better readability */
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        font-size: 20px; /* Further increase font size for smaller devices */
+        padding: 20px; /* Even larger padding for mobile screens */
+    }
+
+    button a {
+        font-size: 20px; /* Ensure the text is also larger on very small screens */
     }
 }
