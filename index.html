@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .text {
+            font-size: 2em;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .show {
+            opacity: 1;
+        }
+
+        .color1 { color: #ff69b4; } /* pink */
+        .color2 { color: #00ff00; } /* green */
+        .color3 { color: #add8e6; } /* light blue */
+
+        .spark {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: yellow;
+            border-radius: 50%;
+            animation: spark 1.5s infinite;
+        }
+
+        @keyframes spark {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background: white;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #ff69b4; /* pink */
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #ff1493; /* deeper pink */
+        }
+    </style>
+</head>
+<body>
+    <div id="text1" class="text color1">Hello, my dear friend!</div>
+    <div id="text2" class="text color2">Sorry for the late message. I know today is your special day. Let's go!</div>
+    <div id="text3" class="text color3">Wishing you a very Happy Birthday! May you achieve everything in your life. You are my first bestie. Happy Birthday! Achieve all your goals.</div>
+    <button  id="myButton" class="button">
+    <a href = "cards.html"> hover on heart icons</button></a>
+
+    <script>
+        function showText(id, delay) {
+            setTimeout(() => {
+                document.getElementById(id).classList.add('show');
+            }, delay);
+        }
+
+        showText('text1', 0);
+        setTimeout(() => document.getElementById('text1').classList.remove('show'), 5000);
+        showText('text2', 5000);
+        setTimeout(() => document.getElementById('text2').classList.remove('show'), 10000);
+        showText('text3', 10000);
+
+        function createSpark() {
+            const spark = document.createElement('div');
+            spark.className = 'spark';
+            spark.style.left = `${Math.random() * window.innerWidth}px`;
+            document.body.appendChild(spark);
+            setTimeout(() => spark.remove(), 1500);
+        }
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.style.left = `${Math.random() * window.innerWidth}px`;
+            document.body.appendChild(snowflake);
+            setTimeout(() => snowflake.remove(), 5000);
+        }
+
+        setInterval(createSpark, 500);
+        setInterval(createSnowflake, 300);
+
+        setTimeout(() => {
+            document.getElementById('myButton').style.display = 'block';
+        }, 20000);
+    </script>
+</body>
+</html>
